@@ -1,0 +1,26 @@
+homepage:
+    path: /homepage
+    controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction
+    defaults:
+        template: default/homepage.html.twig
+index:
+    path: /
+    defaults: { _controller: 'App\Controller\ProductController::index' }
+
+admin:
+    path: /admin
+    defaults: { _controller: 'App\Controller\IndexController::admin' }
+product:
+    path: /product
+    controller: App\Controller\ProductController::product
+
+security_login:
+    path: /security_login
+    controller: App\Controller\SecurityController::security_login
+logout:
+    path: /logout
+    controller: App\Controller\SecurityController::logout
+
+check:
+    path: /member
+    controller: App\Controller\MemberController::member

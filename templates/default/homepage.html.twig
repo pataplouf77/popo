@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block body_id 'homepage' %}
+
+{#
+    the homepage is a special page which displays neither a header nor a footer.
+    this is done with the 'trick' of defining empty Twig blocks without any content
+#}
+{% block header %}{% endblock %}
+{% block footer %}{% endblock %}
+
+{% block body %}
+    <div class="page-header">
+        <h1>Pataplouf</h1>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="jumbotron">
+                <p>
+                    user : pataplouf et password : pataplouf - statut ROLE_ADMIN  ( acces a tout ) 
+					user : paul et password : paul - statut - ROLE_USER   ( acces a Liste Materiel ) 
+					
+					--------------------
+					access_control:
+						- { path: ^/admin, roles: ROLE_ADMIN }
+    
+						- { path: ^/product, roles: ROLE_USER }
+                </p>
+                <p>
+                    <a class="btn btn-primary btn-lg" href="{{ path('admin.product.index') }}">
+                        <i class="fa fa-users" aria-hidden="true"></i> Admin/Product
+                    </a>
+                </p>
+				<p>
+                    <a class="btn btn-primary btn-lg" href="{{ path('admin.user.index') }}">
+                        <i class="fa fa-users" aria-hidden="true"></i> Admin/User
+                    </a>
+                </p>
+				<p>
+                    <a class="btn btn-primary btn-lg" href="{{ path('product') }}">
+                        <i class="fa fa-users" aria-hidden="true"></i> Liste Materiel
+                    </a>
+                </p>
+				
+            </div>
+        </div>
+
+        <div class="col-sm-6">
+            <div class="jumbotron">
+                <p>
+                   login - member - logout - 
+                </p>
+                <p>
+                    <a class="btn btn-primary btn-lg" href="{{ path('security_login') }}">
+                        <i class="fa fa-lock" aria-hidden="true"></i>Login
+                    </a>
+                </p>
+				<p>
+                    <a class="btn btn-primary btn-lg" href="{{ path('member') }}">
+                        <i class="fa fa-users" aria-hidden="true"></i>Member
+                    </a>
+                </p>
+				<p>
+                    <a class="btn btn-primary btn-lg" href="{{ path('logout') }}">
+                        <i class="fa fa-lock" aria-hidden="true"></i>Logout
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

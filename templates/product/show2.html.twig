@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello !{% endblock %}
+
+{% block body %}
+
+ <div class="container mt-4">
+
+    <h1>Gérer les biens - show2</h1>
+
+     <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Titre</th>
+		<th>Price</th>
+		<th>Filename</th>
+        <th>Actions</th>
+		<th>image</th>
+      </tr>
+      </thead>
+      <tbody>
+      {% for product in products %}
+      <tr>
+        <td>{{ product.name }}</td>
+		<td>{{ product.price }}</td>
+		<td>{{ product.filename }}</td>
+		<td>{{ product.imageFile }}</td>
+		<td>
+		{% if product.filename %}
+     <img src="{{ vich_uploader_asset(product, 'imageFile') }}" >
+		{% else %}
+ 
+    	<img src="http://localhost/mypopo/public/images/products/toto.jpg" >
+	 
+ {% endif %}
+		
+		</td>
+		
+		
+        <td>
+          <a href="{{ path('admin', {id: product.id}) }}" class="btn btn-secondary">Editer</a>
+          <form method="post" action="{{ path('admin', {id: product.id}) }}" style="display: inline-block" onsubmit="return confirm('Êtes vous vraiment sûr ?')">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ product.id) }}">
+            <button class="btn btn-danger">Supprimer</button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+
+    <div class="text-right">
+      <a href="{{ path('admin') }}" class="btn btn-primary">Créer un nouveau bien</a>
+    </div>
+	
+
+
+  </div>
+
+
+
+{% endblock %}
+
+
+
+

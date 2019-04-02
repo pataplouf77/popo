@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Materiel d occasion : ' %}
+
+{% block body %}
+    
+
+    <div class="container mt-4">
+        <h1>Materiel d ' Occasion :</h1>
+		
+		{% if is_granted('ROLE_ADMIN') %}
+			<li><a href="{{ path('admin') }}">Ajouter</a></li>
+		{% endif %}
+		
+        <div class="row">
+            {% for product in products %}
+                <div class="col-md-4">
+                    {% include 'product/_product.html.twig' %}
+                </div>
+            {% endfor %}
+        </div>
+       
+    </div>
+	
+{% endblock %}

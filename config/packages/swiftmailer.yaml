@@ -1,0 +1,10 @@
+swiftmailer:
+
+    transport: smtp
+    auth_mode: login
+    host: SSL0.OVH.NET
+    encryption: ssl
+    port: 465
+    username: pataplouf@pataplouf.com
+    password: pataplouf
+    spool: { type: 'memory' }

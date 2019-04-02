@@ -1,0 +1,19 @@
+index:
+    path: /
+    defaults: { _controller: 'App\Controller\ProductController::index' }
+
+product:
+    path: /product
+    controller: App\Controller\ProductController::product
+product1:
+    path: /product1
+    controller: App\Controller\ProductController::product1
+product2:
+    path: /product2
+    controller: App\Controller\ProductController::product2
+login:
+    path: /login
+    controller: App\Controller\SecurityController::login
+security:
+    path: /security
+    controller: App\Controller\SecurityController::security

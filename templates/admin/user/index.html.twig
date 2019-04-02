@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Gérer les Utilisateurs' %}
+
+{% block body %}
+  <div class="container mt-4">
+
+    <h1>Gérer les users1</h1>
+
+      <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Username</th>
+		<th>id</th>
+		<th>Bouton</th>
+        <th>Password</th>
+		<th>Role</th>
+		<th>Niveau</th>
+		<th>certif</th>
+		<th>licence</th>
+      </tr>
+      </thead>
+      <tbody>
+      {% for user in users %}
+      <tr>
+	  <td>{{ user.username }}</td>
+	  <td>{{ user.id }}</td>
+        <td>
+		
+          <a href="{{ path('admin.user.edit', {id: user.id}) }}" class="btn btn-secondary">Editer</a>
+          <form method="post" action="{{ path('admin.user.delete', {id: user.id}) }}" style="display: inline-block" onsubmit="return confirm('Êtes vous vraiment sûr ?')">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ user.id) }}">
+            <button class="btn btn-danger">Supprimer</button>
+          </form>
+		     
+        </td>
+		<td>
+		
+		<form method="post" action="{{ path('admin.user.password', {id: user.id}) }}" style="display: inline-block" onsubmit="return confirm('Êtes vous vraiment sûr ?')">
+            
+            <button class="btn btn-primary">Password</button>
+          </form>
+		</td>
+	  
+        <td>{{ user.plainPassword }}</td>
+		
+		<td>{{ user.roles[0] }}</td>
+		<td>{{ user.niveau }}</td>
+		<td>{{ user.certif }}</td>
+		<td>{{ user.licence }}</td>
+		
+      </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+	<div class="text-right">
+      <a href="{{ path('admin.user.new') }}" class="btn btn-primary">Créer un nouveau bien</a>
+    </div>
+	<div class="text-left">
+      <a href="{{ path('admin.user.contacter') }}" class="btn btn-primary">Contacter</a>
+    </div>
+    
+
+  </div>
+{% endblock %}

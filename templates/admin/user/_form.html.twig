@@ -1,0 +1,28 @@
+
+{{ form_start(form) }}
+<div class="row">
+    <div class="col-md-4">{{ form_row(form.username) }}</div>
+    <div class="col-md-4">{{ form_row(form.fullName) }}</div>
+    <div class="col-md-4">{{ form_row(form.email) }}</div>
+</div>
+<div class="row">
+    <div class="col-md-4">{{ form_row(form.filename) }}</div>
+    <div class="col-md-4">{{ form_row(form.plainPassword) }}</div>
+    <div class="col-md-4">{{ form_row(form.niveau) }}</div>
+</div>
+<div class="row">
+
+   <div class="col-md-4">{{ form_row(form.updatedAt) }}</div>
+    <div class="col-md-4">{{ form_row(form.certif) }}</div>
+    <div class="col-md-4">{{ form_row(form.licence) }}</div>
+</div>
+<div class="row">
+   
+   
+</div>
+
+{{ form_rest(form) }}
+
+<button class="btn btn-primary">{{ button|default('Enregistrer') }}</button>
+{{ form_end(form) }}
+

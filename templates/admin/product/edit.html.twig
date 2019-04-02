@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="container mt-4">
+	<h1>Editer le bien - admin/product/edit</h1>
+        <div class="row">
+        <div class="col-md-8">
+                          <img src="http://localhost/mypopo/public/images/products/{{product.filename }} " width="232"  />
+                      </div>
+  </div>
+        <h1>Editer le bien</h1>
+        {{ include('admin/product/_form.html.twig', {button: 'Editer'}) }}
+    </div>
+
+{% endblock %}
+
+

@@ -1,0 +1,22 @@
+
+<div class="card" style="width: 12rem;">
+
+    {% if product.filename %}
+        <img src="{{ vich_uploader_asset(product, 'imageFile') | imagine_filter('medium')  }}" alt="image du bien" class="card-img-top" >
+    {% else %}
+        <img src="{{ 'http://localhost/mypopo/public/images/products/empty.jpg'  }}" alt="image du bien" class="card-img-top">
+    {% endif %}
+	
+</div>
+<div class="card-body">
+        <h5 class="card-title">Description : 
+           
+                {{ product.name }}
+           
+        </h5>
+		
+        <p class="card-text">Prix : {{ product.price }}  euro </p>
+		<p class="card-text">Taille : {{ product.taille }}  </p>
+        
+ </div>
+
