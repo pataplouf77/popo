@@ -36,13 +36,9 @@
 		     
         </td>
 		<td>
-		
-		<form method="post" action="{{ path('admin.user.password', {id: user.id}) }}" style="display: inline-block" onsubmit="return confirm('Êtes vous vraiment sûr ?')">
-            
-            <button class="btn btn-primary">Password</button>
-          </form>
+		 <a href="{{ path('user_change_password') }}" class="btn btn-secondary">Password</a>
 		</td>
-	  
+			  
         <td>{{ user.plainPassword }}</td>
 		
 		<td>{{ user.roles[0] }}</td>
@@ -55,7 +51,7 @@
       </tbody>
     </table>
 	<div class="text-right">
-      <a href="{{ path('admin.user.new') }}" class="btn btn-primary">Créer un nouveau bien</a>
+      <a href="{{ path('admin.user.new') }}" class="btn btn-primary">Créer un nouveau User</a>
     </div>
 	<div class="text-left">
       <a href="{{ path('admin.user.contacter') }}" class="btn btn-primary">Contacter</a>

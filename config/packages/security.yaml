@@ -41,6 +41,6 @@ security:
         ROLE_ADMIN:      ROLE_USER
         
     access_control:
-         - { path: ^/admin, roles: ROLE_ADMIN }
+         - { path: ^/admin/tag, roles: ROLE_ADMIN }
     
-         - { path: ^/product, roles: ROLE_USER }
+         - { path: ^/tag, roles: ROLE_USER }

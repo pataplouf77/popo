@@ -14,9 +14,9 @@
                 {{ product.name }}
            
         </h5>
-		
-        <p class="card-text">Prix : {{ product.price }}  euro </p>
+	    <p class="card-text">Prix : {{ product.price }}  euro </p>
 		<p class="card-text">Taille : {{ product.taille }}  </p>
+		<a href="{{ path('admin.product.edit', {id: product.id}) }}" class="btn btn-secondary">Editer</a>
         
  </div>
 

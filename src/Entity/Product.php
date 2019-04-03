@@ -57,6 +57,12 @@ class Product
      * @ORM\Column(type="string", length=30)
      */
     private $taille;
+	
+	/**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Tag", inversedBy="products")
+     */
+    private $tags;
+	
 	/**
      * @ORM\Column(type="datetime")
      * @var \DateTime
@@ -66,7 +72,7 @@ class Product
 	public function __construct()
     {
         $this->updatedAt = new \DateTime();
-        //$this->tags = new ArrayCollection();
+		$this->tags = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -84,7 +90,39 @@ class Product
         $this->name = $name;
 
         return $this;
-	 }
+	}
+	/**
+     * @return Collection|Tag[]
+     */
+    public function getTags(): Collection
+    {
+        return $this->tags;
+    }
+	//
+	public function setTags(?Tags $tags): self
+    {
+        $this->tags = $tags;
+        return $this;
+    }
+    public function addTag(Tag $tag): self
+    {
+        if (!$this->tags->contains($tag)) {
+            $this->tags[] = $tag;
+            $tag->addProduct($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTag(Tag $tag): self
+    {
+        if ($this->tags->contains($tag)) {
+            $this->tags->removeElement($tag);
+            $tag->removeProduct($this);
+        }
+
+        return $this;
+    } 
 	//
 	/**
      * @return string|null

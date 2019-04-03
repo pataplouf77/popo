@@ -7,7 +7,7 @@
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<nav class="navbar navbar-expand-lg navbar-light bg-primary">
   <a class="navbar-brand" href="http://www.pataplouf.com">Pataplouf</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -15,30 +15,41 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="{{ path('admin.user.index') }}">User</a>
+      </li>
       <li class="nav-item">
-        <a class="nav-link {% if current_menu is defined and current_menu == 'properties' %}active{% endif %}"
-                           href="{{ path('product') }}">Materiel</a>
+        <a class="nav-link" href="#">Link</a>
       </li>
-	  <li class="nav-item">
-        <a class="nav-link {% if current_menu is defined and current_menu == 'properties' %}active{% endif %}"
-                           href="{{ path('admin.user.index') }}">User</a>
-      </li>
-
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Dropdown
         </a>
-        <div class="dropdown-menu" aria-labelledby="Menu2">
-			<a class="dropdown-item" href="{{ path('homepage') }}">Homepage</a>
-			<a class="dropdown-item" href="{{ path('member') }}">membre</a>
-         
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{{ path('product') }}">Product</a>
+		   <a class="dropdown-item" href="{{ path('security_login') }}">Login</a>
+          <a class="dropdown-item" href="{{ path('logout') }}">Logout</a>
           <div class="dropdown-divider"></div>
-           <a class="dropdown-item" href="{{ path('logout') }}">logout</a>
-          <a class="dropdown-item" href="{{ path('admin') }}">admin</a>
+          <a class="dropdown-item" href="#">Something else here</a>
         </div>
       </li>
-      
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+      </li>
     </ul>
+    </div>
+</nav>	
+	
+	
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" href="{{ path('homepage') }}">Home</a>
+  <a class="navbar-brand" href="{{ path('product') }}">Materiel</a>
+  <a class="navbar-brand"  href="{{ path('admin.user.index') }}">User</a>
+   <a class="navbar-brand"  href="{{ path('admin.tag.index') }}">Tag</a>
+    
+  
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>

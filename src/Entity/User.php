@@ -331,13 +331,13 @@ class User implements UserInterface, \Serializable
     {
         return $this->imageFile;
     }
-	//
+	//public function setImageFile(?File $image = null): void
 	/**
      * @param File|null $imageFile
      * @return User
      * @throws \Exception
      */
-    public function setImageFile(?File $imageFile): User
+    public function setImageFile(?File $imageFile = null ): User
     {
         $this->imageFile = $imageFile;
         if ($this->imageFile instanceof UploadedFile) {

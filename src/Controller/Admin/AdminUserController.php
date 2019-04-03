@@ -150,23 +150,24 @@ class AdminUserController extends AbstractController
         return $this->redirectToRoute('admin.user.index');
     }
 	
-	 /**
-	 * @Route("/admin/user/{id}", name="admin.user.password", methods="GET|POST")
-  	 * @param User $user
-	 * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\Response
-     * @throws \Exception
+	 
+	//
+	/**
+     * @Route("/change-password", methods={"GET", "POST"}, name="user_change_password")
+	 * @return \Symfony\Component\HttpFoundation\Response
      */
-  
-    public function changePassword(User $user,Request $request, UserPasswordEncoderInterface $encoder)
+    public function changePassword(Request $request, UserPasswordEncoderInterface $encoder): Response
     {
-        //$user = $this->getUser();
-
-        $form = $this->createForm(ChangePasswordType::class);
+        $user = $this->getUser();
+		
+        $form = $this->createForm(ChangePasswordType::class , $user );
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $user->setPassword($encoder->encodePassword($user, $form->get('newPassword')->getData()));
+			
+			$user->setPlainPassword($form->get('password')->getData()) ;
+			
+            $user->setPassword($encoder->encodePassword($user, $form->get('password')->getData()));
 
             $this->getDoctrine()->getManager()->flush();
 

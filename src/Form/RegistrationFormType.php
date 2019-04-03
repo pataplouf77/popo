@@ -23,7 +23,7 @@ class RegistrationFormType extends AbstractType
 		//
         $builder
             ->add('fullName', TextType::class ,['label' => 'Nom de famille'] )
-		    ->add('email', EmailType::class , ['label' => 'Prenom '] )            
+		    ->add('email', EmailType::class , ['label' => 'Email'] )            
             ->add('username', TextType::class)
 			->add('plainPassword', TextType::class)
 			->add('niveau', ChoiceType::class, [
@@ -36,12 +36,13 @@ class RegistrationFormType extends AbstractType
 					'E1' => 'E1',	'E2' => 'E2',	'E3' => 'E3',
 					],	])
 		->add('certif', TextType::class)
+		
 		->add('filename')
-		->add('imageFile', FileType::class, ['label' => 'photo Ident'])
+		->add('imageFile', FileType::class, ['label' => 'photo Ident' ,  'required' => false ] )
 		->add('updatedAt', DateType::class)			
 		->add('licence', TextType::class)
 		->add('filename2')
-		->add('imageFile2', FileType::class, ['label' => 'certif medical'] )
+		->add('imageFile2', FileType::class, ['label' => 'certif medical' ,  'required' => false ] )
 		->add('updatedAt2', DateType::class)		
 		->add('roles', ChoiceType::class, array(
 			'choices'  => array('Choose your role' => 'Choose your role',
